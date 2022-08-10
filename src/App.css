@@ -1,0 +1,72 @@
+.App {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Container {
+  background-color: #FFF;
+  color: #70A9A1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  border-radius: 4px;
+
+  width: 50%;
+  height: 50%;
+}
+
+.Label {
+  color: #ff6150;
+  font-weight: 900;
+  font-size: 4rem;
+
+  margin-bottom: 2rem;
+}
+
+.Input {
+  width: 70%;
+  padding: 1rem 1.5rem;
+
+  color: #0B2027;
+  background-color: #f1d15309;
+  border: 1px solid #0B2027;
+  border-radius: 4px;
+
+  font-size: 1.5rem;
+  font-weight: 900;
+
+  outline: none;
+  margin-bottom: 2rem;
+}
+
+.Button {
+  width: 40%;
+  padding: 0.8rem 0.9rem;
+
+  background-color: #072448;
+  color: #FFF;
+  border: 0;
+  border-radius: 5px;
+
+  font-size: 2rem;
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+.Button:hover {
+  background-color: #073874;
+  color: #FFF;
+}
+
+.Button:active {
+  background-color: #174b8b;
+  color: #FFF;
+}
