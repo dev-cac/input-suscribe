@@ -35,6 +35,6 @@ app.delete('/users', async (req, res) => {
   res.json({ message: 'All users deleted' });
 })
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('Server started on port 3000')
 });
