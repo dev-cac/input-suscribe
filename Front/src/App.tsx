@@ -1,57 +1,52 @@
-import { useState, useEffect, FormEventHandler } from 'react'
+import { useState, useEffect } from 'react'
 
 import Dino from './components/Dino';
+import Form from './components/Form';
 
 import './styles/App.css';
 
+const url = import.meta.env.VITE_SERVER_DB;
+
+type User = {
+  id: number,
+  name: string
+}
+
 function App() {
-  const [error, setError] = useState('');
-  const [user, setUser] = useState('');
+  const [showForm, setShowForm] = useState(true);
+  const [users, setUsers] = useState([]);
 
-  const verifyUser = (name: string) => {
-    if (!name.match(/^[A-ZÀ-ÿ\u00f1\u00d1 ]+$/i) && name !== '') {
-      setError('Oops, no parece un nombre válido');
-    }
-  }
+  useEffect(() => {
+    fetch(`${url}`)
+      .then(response => response.json())
+      .then(data => setUsers(data))
+  }, [showForm])
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (error !== '') setError('');
-    const { value } = e.target;
-
-    verifyUser(value);
-    setUser(value);
-  }
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    setError('');
-    e.preventDefault();
-
-    verifyUser(user);
-    if (!user.trim()) {
-      setError('Por favor, digite su nombre');
-      return;
-    }
-
-    if (error === '') {
-      console.log(`Hola: ${user}`);
-      setUser('');
-    }
+  const submitUser = (user: string) => {
+    fetch(`${url}/user/${user}`, {
+      method: 'POST',
+    }).then(() => {
+      setShowForm(false);
+    })
   }
 
   return (
     <div className="App">
       <Dino />
 
-      <form className="Container" onSubmit={handleSubmit}>
-
-        <label className="Label" htmlFor="name">Suscríbete</label>
-        <input value={user} onChange={handleChange} className='Input' id='name' name="name" type="text" placeholder='Ingrese su nombre *' />
-        <p className='Error'>{error}</p>
-
-        <button type='submit' className='Button'>Suscribirme</button>
-
-      </form>
-
+      {
+        showForm ? <Form submitUser={submitUser}/> : (
+          <div className='Container'>
+            {
+              users.map((user: User) => (
+                <div key={user.id}>
+                  <p>{user.name}</p>
+                </div>
+              ))
+            }
+          </div>
+        )
+      }
     </div>
   )
 }
