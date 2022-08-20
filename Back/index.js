@@ -11,6 +11,12 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// Capitalize
+
+const capitalize = str => {
+  return str.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+}
+
 app.get('/', async (req, res) => {
   const users = await prisma.user.findMany({})
 
@@ -20,9 +26,11 @@ app.get('/', async (req, res) => {
 app.post('/user/:name', async (req, res) => {
   const { name } = req.params
 
+  const normalizedName = capitalize(name);
+
   const user = await prisma.user.create({
     data: {
-      name: name,
+      name: normalizedName,
     }
   })
 

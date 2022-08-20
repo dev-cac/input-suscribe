@@ -2,15 +2,11 @@ import { useState, useEffect } from 'react'
 
 import Dino from './components/Dino';
 import Form from './components/Form';
+import ListUsers from './components/ListUsers';
 
 import './styles/App.css';
 
 const url = import.meta.env.VITE_SERVER_DB;
-
-type User = {
-  id: number,
-  name: string
-}
 
 function App() {
   const [showForm, setShowForm] = useState(true);
@@ -33,20 +29,7 @@ function App() {
   return (
     <div className="App">
       <Dino />
-
-      {
-        showForm ? <Form submitUser={submitUser}/> : (
-          <div className='Container'>
-            {
-              users.map((user: User) => (
-                <div key={user.id}>
-                  <p>{user.name}</p>
-                </div>
-              ))
-            }
-          </div>
-        )
-      }
+      { showForm ? <Form submitUser={submitUser}/> : <ListUsers users={users}/> }
     </div>
   )
 }

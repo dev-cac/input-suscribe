@@ -17,15 +17,15 @@ function Dino() {
     return velEscenario * +deltaTime * gameVel;
   }
 
-  useEffect(() => {
-    const MoverSuelo = () => {
-      sueloX += calcularDesplazamiento();
+  const MoverSuelo = () => {
+    sueloX += calcularDesplazamiento();
 
-      if (canvasRef.current && wall.current) {
-        canvasRef.current.style.left = -(sueloX % wall.current.clientWidth) + "px";
-      }
+    if (canvasRef.current && wall.current) {
+      canvasRef.current.style.left = -(sueloX % wall.current.clientWidth) + "px";
     }
+  }
 
+  useEffect(() => {
     const Loop = () => {
       deltaTime = (+new Date() - +time) / 1000;
       time = new Date();
