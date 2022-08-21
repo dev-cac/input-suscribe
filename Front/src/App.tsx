@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <Dino />
-      <Container setShowForm={setShowForm}>
+      <Container showForm={showForm} setShowForm={setShowForm}>
         {showForm ? <Form submitUser={submitUser} /> : <ListUsers users={users} />}
       </Container>
     </div>

@@ -7,7 +7,29 @@
   align-items: center;
 }
 
+.Menu {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  width: 3rem;
+  height: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 2px;
+}
+
+.Menu:hover {
+  cursor: pointer;
+  border-radius: 30%;
+  background-color: #041a3311;
+}
+
 .Container {
+  position: relative;
   background-color: #FFF;
   color: #70A9A1;
 

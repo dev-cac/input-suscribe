@@ -35,7 +35,7 @@ const ListUsers = ({ users }: ListUsersProps) => {
   if (!usersList.length || usersList.length === 0) {
     return (
       <>
-        <h1 style={{ marginBottom: '15px' }} >Mejores Usuarios</h1>
+        <h2 className='Titulo' >Mejores Usuarios</h2>
         <input value={textInput} onChange={handleChange} style={{ marginBottom: '15px' }} className="Input" type="text" placeholder="Buscar" />
         <h1 className='Error'>Usuario no encontrado</h1>
       </>
@@ -44,7 +44,7 @@ const ListUsers = ({ users }: ListUsersProps) => {
 
   return (
     <>
-      <h1 className='Titulo' >Mejores Usuarios</h1>
+      <h2 className='Titulo' >Mejores Usuarios</h2>
       <input value={textInput} onChange={handleChange} style={{ marginBottom: '15px' }} className="Input" type="text" placeholder="Buscar" />
       <div className='Usuarios'>
         {
