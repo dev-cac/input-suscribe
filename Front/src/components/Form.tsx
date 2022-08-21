@@ -39,14 +39,12 @@ const Form = ({ submitUser }: FormProps) => {
   }
 
   return (
-    <form className="Container" onSubmit={handleSubmit}>
-
+    <form className='Form' onSubmit={handleSubmit}>
       <label className="Label" htmlFor="name">Suscríbete</label>
       <input value={user} onChange={handleChange} className='Input' id='name' name="name" type="text" placeholder='Ingrese su nombre *' />
       <p className='Error'>{error}</p>
 
       <button type='submit' className='Button'>Suscribirme</button>
-
     </form>
   )
 }

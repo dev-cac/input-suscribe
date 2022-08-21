@@ -20,6 +20,18 @@
 
   width: 50%;
   min-height: 60%;
+
+  overflow: hidden;
+}
+
+.Form {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .Usuarios {
@@ -33,13 +45,16 @@
   gap: 10px;
 
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .Usuario {
-  background-color: #072448;
+  background-color: #072448b7;
   color: #FFF;
-  border-radius: 2px;
-  padding: 1.5rem;
+  border-radius: 15px;
+  padding: 1.1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .Label {
@@ -48,6 +63,15 @@
   font-size: 4rem;
 
   margin-bottom: 2rem;
+}
+
+.Titulo {
+  color: #041a33;
+  font-weight: 900;
+  font-size: 2.5rem;
+
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .Input {

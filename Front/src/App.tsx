@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Dino from './components/Dino';
 import Form from './components/Form';
 import ListUsers from './components/ListUsers';
+import Container from './components/Container';
 
 import './styles/App.css';
 
@@ -29,7 +30,9 @@ function App() {
   return (
     <div className="App">
       <Dino />
-      { showForm ? <Form submitUser={submitUser}/> : <ListUsers users={users}/> }
+      <Container setShowForm={setShowForm}>
+        {showForm ? <Form submitUser={submitUser} /> : <ListUsers users={users} />}
+      </Container>
     </div>
   )
 }
